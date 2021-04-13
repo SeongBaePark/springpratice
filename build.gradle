@@ -1,0 +1,31 @@
+buildscript {
+    ext { // ext 는 buildgradle에서 전역변수를 설정
+        springBootVersion = "2.1.7.RELEASE"
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management' // 의존성들을 관리해 주는 플러그인 꼭 추가 !!
+
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+
+repositories { // 리포지토리는 각종 의존성 (라이브러리)들을 어떤 원격 저장소에서 받을지를 정함.
+    mavenCentral()
+}
+
+dependencies { // 인텔리제이 의조넝 자동완성 키는 컨트롤+스페이스
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
